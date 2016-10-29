@@ -2,9 +2,10 @@ package com.iamhabib.easyadstest;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.Toast;
 
-import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.NativeExpressAdView;
 import com.iamhabib.easyads.EasyAds;
@@ -24,21 +25,16 @@ public class MainActivity extends AppCompatActivity {
                 .with((NativeExpressAdView)findViewById(R.id.nativeAds))
                 .show();
         EasyAds.forInterstitial(MainActivity.this)
-                .adsUnitId(getString(R.string.interstitial_ad_unit_id))
-                .testDevice("FBDDE95B4A3E5E14648320330112B091")
-                .listener(new AdListener() {
+                .delay(30000)
+                .listener(new EasyAds.Interstitial.AdsListener(){
                     @Override
                     public void onAdLoaded() {
                         super.onAdLoaded();
-                        Toast.makeText(MainActivity.this, "L", Toast.LENGTH_SHORT).show();
-                    }
-
-                    @Override
-                    public void onAdFailedToLoad(int i) {
-                        super.onAdFailedToLoad(i);
-                        Toast.makeText(MainActivity.this, "F", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "OK", Toast.LENGTH_SHORT).show();
                     }
                 })
+                .adUnitId(getString(R.string.interstitial_ad_unit_id))
+                .testDevice("FBDDE95B4A3E5E14648320330112B091")
                 .show();
 
     }

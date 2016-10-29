@@ -7,9 +7,13 @@ import android.widget.Toast;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.NativeExpressAdView;
+import com.google.android.gms.ads.purchase.InAppPurchaseListener;
+import com.google.android.gms.ads.purchase.PlayStorePurchaseListener;
+import com.google.android.gms.ads.reward.RewardedVideoAdListener;
 
 /**
  * Created by HABIB on 10/29/2016.
@@ -19,28 +23,71 @@ public class EasyAds {
     static Handler delayHandler = new Handler();
     static Runnable delayRunnable;
 
-    public static BuilderBanner forBanner(Context context) {
-        return new BuilderBanner(context);
+    public static Banner forBanner(Context context) {
+        return new Banner(context);
     }
 
-    public static BuilderNative forNative(Context context) {
-        return new BuilderNative(context);
+    public static Native forNative(Context context) {
+        return new Native(context);
     }
 
-    public static BuilderInterstitial forInterstitial(Context context) {
-        return new BuilderInterstitial(context);
+    public static Interstitial forInterstitial(Context context) {
+        return new Interstitial(context);
     }
 
-    public static class BuilderBanner {
+    public static class Banner {
 
         private long delayTime = 0;
         Context context;
         AdView adViewBanner;
         AdRequest.Builder adRequestBuilder;
 
-        private BuilderBanner(final Context context) {
+        private Banner(final Context context) {
             this.context = context;
             adRequestBuilder = new AdRequest.Builder();
+        }
+
+        public Banner with(AdView adViewBanner) {
+            this.adViewBanner.setAdSize(AdSize.SMART_BANNER);
+            return this;
+        }
+
+        public Banner testDevice(String deviceCode) {
+            adRequestBuilder.addTestDevice(deviceCode);
+            return this;
+        }
+
+        public Banner adUnitId(String adsUnitId) {
+            this.adViewBanner.setAdUnitId(adsUnitId);
+            return this;
+        }
+
+        public Banner adSize(AdSize adSize) {
+            this.adViewBanner.setAdSize(adSize);
+            return this;
+        }
+
+        public Banner playStorePurchaseParams(PlayStorePurchaseListener storePurchaseListener, String s) {
+            this.adViewBanner.setPlayStorePurchaseParams(storePurchaseListener, s);
+            return this;
+        }
+
+        public Banner inAppPurchaseListener(InAppPurchaseListener inAppPurchaseListener) {
+            this.adViewBanner.setInAppPurchaseListener(inAppPurchaseListener);
+            return this;
+        }
+
+        public Banner delay(int timeInMillis) {
+            this.delayTime = timeInMillis;
+            return this;
+        }
+
+        public Banner listener(AdListener adListener) {
+            adViewBanner.setAdListener(adListener);
+            return this;
+        }
+
+        public Banner show() {
             delayRunnable = new Runnable() {
                 @Override
                 public void run() {
@@ -54,53 +101,20 @@ public class EasyAds {
                     }
                 }
             };
-        }
-
-        public BuilderBanner with(AdView adViewBanner) {
-            this.adViewBanner = adViewBanner;
-            return this;
-        }
-
-        public BuilderBanner testDevice(String deviceCode) {
-            adRequestBuilder.addTestDevice(deviceCode);
-            return this;
-        }
-
-        public BuilderBanner adsUnitId(String adsUnitId) {
-            this.adViewBanner.setAdUnitId(adsUnitId);
-            return this;
-        }
-
-        public BuilderBanner delay(int timeInMilis) {
-            this.delayTime = timeInMilis;
-            return this;
-        }
-
-        public BuilderBanner listener(AdListener adListener) {
-            adViewBanner.setAdListener(adListener);
-            return this;
-        }
-
-        public BuilderBanner listener(AdView.OnClickListener clickListener) {
-            adViewBanner.setOnClickListener(clickListener);
-            return this;
-        }
-
-        public BuilderBanner show() {
             delayHandler.postDelayed(delayRunnable, delayTime);
             return this;
         }
 
     }
 
-    public static class BuilderNative {
+    public static class Native {
 
         private long delayTime = 0;
         Context context;
         NativeExpressAdView adViewNative;
         AdRequest.Builder adRequestBuilder;
 
-        private BuilderNative(final Context context) {
+        private Native(final Context context) {
             this.context = context;
             adRequestBuilder = new AdRequest.Builder();
             delayRunnable = new Runnable() {
@@ -118,51 +132,61 @@ public class EasyAds {
             };
         }
 
-        public BuilderNative with(NativeExpressAdView adViewNative) {
+        public Native with(NativeExpressAdView adViewNative) {
             this.adViewNative = adViewNative;
             return this;
         }
 
-        public BuilderNative testDevice(String code) {
+        public Native testDevice(String code) {
             adRequestBuilder.addTestDevice(code);
             return this;
         }
 
-        public BuilderNative adsUnitId(String adsUnitId) {
+        public Native adSize(AdSize adSize) {
+            this.adViewNative.setAdSize(adSize);
+            return this;
+        }
+
+        public Native playStorePurchaseParams(PlayStorePurchaseListener storePurchaseListener, String s) {
+            this.adViewNative.setPlayStorePurchaseParams(storePurchaseListener, s);
+            return this;
+        }
+
+        public Native inAppPurchaseListener(InAppPurchaseListener inAppPurchaseListener) {
+            this.adViewNative.setInAppPurchaseListener(inAppPurchaseListener);
+            return this;
+        }
+
+        public Native adUnitId(String adsUnitId) {
             this.adViewNative.setAdUnitId(adsUnitId);
             return this;
         }
 
-        public BuilderNative delay(int timeInMilis) {
-            this.delayTime = timeInMilis;
+        public Native delay(int timeInMillis) {
+            this.delayTime = timeInMillis;
             return this;
         }
 
-        public BuilderNative listener(AdListener adListener) {
+        public Native listener(AdListener adListener) {
             adViewNative.setAdListener(adListener);
             return this;
         }
 
-        public BuilderNative listener(AdView.OnClickListener clickListener) {
-            adViewNative.setOnClickListener(clickListener);
-            return this;
-        }
-
-        public BuilderNative show() {
+        public Native show() {
             delayHandler.postDelayed(delayRunnable, delayTime);
             return this;
         }
 
     }
 
-    public static class BuilderInterstitial {
+    public static class Interstitial {
         private long delayTime = 0;
-        private String deviceCode="";
+        private boolean isAddedListener = false;
         Context context;
-        InterstitialAd interstitialAd;
+        static InterstitialAd interstitialAd;
         AdRequest.Builder adRequestBuilder;
 
-        private BuilderInterstitial(final Context context) {
+        private Interstitial(final Context context) {
             this.context = context;
             interstitialAd = new InterstitialAd(context);
             adRequestBuilder = new AdRequest.Builder();
@@ -174,14 +198,6 @@ public class EasyAds {
                     }
                     try {
                         interstitialAd.loadAd(adRequestBuilder.build());
-                        while (true){
-                            if(interstitialAd.isLoaded()) {
-                                interstitialAd.show();
-                                break;
-                            }
-                        }
-
-
                     } catch (Exception e) {
                         Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
                     }
@@ -189,31 +205,80 @@ public class EasyAds {
             };
         }
 
-        public BuilderInterstitial testDevice(String deviceCode) {
-            this.deviceCode=deviceCode;
+        public Interstitial testDevice(String deviceCode) {
             adRequestBuilder.addTestDevice(deviceCode);
             return this;
         }
 
-        public BuilderInterstitial adsUnitId(String adsUnitId) {
+        public Interstitial adUnitId(String adsUnitId) {
             this.interstitialAd.setAdUnitId(adsUnitId);
             return this;
         }
 
-        public BuilderInterstitial delay(int timeInMilis) {
-            this.delayTime = timeInMilis;
+        public Interstitial playStorePurchaseParams(PlayStorePurchaseListener storePurchaseListener, String s) {
+            this.interstitialAd.setPlayStorePurchaseParams(storePurchaseListener, s);
             return this;
         }
 
-        public BuilderInterstitial listener(AdListener adListener) {
+        public Interstitial inAppPurchaseListener(InAppPurchaseListener inAppPurchaseListener) {
+            this.interstitialAd.setInAppPurchaseListener(inAppPurchaseListener);
+            return this;
+        }
+
+        public Interstitial rewardedVideoAdListener(RewardedVideoAdListener rewardedVideoAdListener) {
+            this.interstitialAd.setRewardedVideoAdListener(rewardedVideoAdListener);
+            return this;
+        }
+
+        public Interstitial delay(int timeInMillis) {
+            this.delayTime = timeInMillis;
+            return this;
+        }
+
+        public Interstitial listener(AdsListener adListener) {
+            this.isAddedListener = true;
             interstitialAd.setAdListener(adListener);
             return this;
         }
 
-        public BuilderInterstitial show() {
+        public Interstitial show() {
+            if (!isAddedListener) {
+                interstitialAd.setAdListener(new Interstitial.AdsListener());
+            }
             delayHandler.postDelayed(delayRunnable, delayTime);
             return this;
         }
 
+        public static class AdsListener extends AdListener {
+
+            public AdsListener() {
+            }
+
+            @Override
+            public void onAdClosed() {
+                super.onAdClosed();
+            }
+
+            @Override
+            public void onAdFailedToLoad(int i) {
+                super.onAdFailedToLoad(i);
+            }
+
+            @Override
+            public void onAdLeftApplication() {
+                super.onAdLeftApplication();
+            }
+
+            @Override
+            public void onAdOpened() {
+                super.onAdOpened();
+            }
+
+            @Override
+            public void onAdLoaded() {
+                super.onAdLoaded();
+                interstitialAd.show();
+            }
+        }
     }
 }

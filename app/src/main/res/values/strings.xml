@@ -2,6 +2,6 @@
     <string name="app_name">EasyAds</string>
 
     <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
-    <string name="interstitial_ad_unit_id">ca-app-pub-7745460116748069/2053955234</string>
+    <string name="interstitial_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
     <string name="native_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
 </resources>
