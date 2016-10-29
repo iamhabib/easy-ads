@@ -6,6 +6,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.NativeExpressAdView;
 import com.iamhabib.easyads.EasyAds;
 
 public class MainActivity extends AppCompatActivity {
@@ -15,16 +16,25 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        EasyAds.forBanner(this)
+        /*EasyAds.forBanner(this)
                 .with((AdView)findViewById(R.id.adView))
+                .testDevice("FBDDE95B4A3E5E14648320330112B091")
                 .show();
-        EasyAds.forInterstitial(this)
+        EasyAds.forNative(MainActivity.this)
+                .with((NativeExpressAdView)findViewById(R.id.nativeAds))
+                .testDevice("FBDDE95B4A3E5E14648320330112B091")
+                .show();*/
+        EasyAds.forInterstitial(MainActivity.this)
+                .adsUnitId(getString(R.string.interstitial_ad_unit_id))
+                .testDevice("FBDDE95B4A3E5E14648320330112B091")
                 .listener(new AdListener() {
                     @Override
                     public void onAdLoaded() {
                         super.onAdLoaded();
                     }
                 })
+                .delay(0)
                 .show();
+
     }
 }
