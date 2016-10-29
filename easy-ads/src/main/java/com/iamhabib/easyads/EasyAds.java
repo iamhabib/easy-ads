@@ -51,7 +51,7 @@ public class EasyAds {
             };
         }
 
-        public BuilderBanner banner(AdView adViewBanner){
+        public BuilderBanner with(AdView adViewBanner){
             this.adViewBanner = adViewBanner;
             return this;
         }
@@ -104,7 +104,7 @@ public class EasyAds {
             };
         }
 
-        public BuilderNative banner(NativeExpressAdView adViewNative){
+        public BuilderNative with(NativeExpressAdView adViewNative){
             this.adViewNative = adViewNative;
             return this;
         }

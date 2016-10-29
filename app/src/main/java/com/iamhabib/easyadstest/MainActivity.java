@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         EasyAds.forBanner(this)
-                .banner((AdView)findViewById(R.id.adView))
+                .with((AdView)findViewById(R.id.adView))
                 .show();
         EasyAds.forInterstitial(this)
                 .listener(new AdListener() {
