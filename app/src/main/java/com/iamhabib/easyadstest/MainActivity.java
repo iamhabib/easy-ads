@@ -16,14 +16,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        /*EasyAds.forBanner(this)
+        EasyAds.forBanner(this)
                 .with((AdView)findViewById(R.id.adView))
                 .testDevice("FBDDE95B4A3E5E14648320330112B091")
                 .show();
         EasyAds.forNative(MainActivity.this)
                 .with((NativeExpressAdView)findViewById(R.id.nativeAds))
-                .testDevice("FBDDE95B4A3E5E14648320330112B091")
-                .show();*/
+                .show();
         EasyAds.forInterstitial(MainActivity.this)
                 .adsUnitId(getString(R.string.interstitial_ad_unit_id))
                 .testDevice("FBDDE95B4A3E5E14648320330112B091")
@@ -31,10 +30,22 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onAdLoaded() {
                         super.onAdLoaded();
+                        Toast.makeText(MainActivity.this, "L", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onAdFailedToLoad(int i) {
+                        super.onAdFailedToLoad(i);
+                        Toast.makeText(MainActivity.this, "F", Toast.LENGTH_SHORT).show();
                     }
                 })
-                .delay(0)
                 .show();
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 }

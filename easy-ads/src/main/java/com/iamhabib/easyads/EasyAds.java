@@ -157,6 +157,7 @@ public class EasyAds {
 
     public static class BuilderInterstitial {
         private long delayTime = 0;
+        private String deviceCode="";
         Context context;
         InterstitialAd interstitialAd;
         AdRequest.Builder adRequestBuilder;
@@ -173,6 +174,14 @@ public class EasyAds {
                     }
                     try {
                         interstitialAd.loadAd(adRequestBuilder.build());
+                        while (true){
+                            if(interstitialAd.isLoaded()) {
+                                interstitialAd.show();
+                                break;
+                            }
+                        }
+
+
                     } catch (Exception e) {
                         Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
                     }
@@ -180,8 +189,9 @@ public class EasyAds {
             };
         }
 
-        public BuilderInterstitial testDevice(String code) {
-            adRequestBuilder.addTestDevice(code);
+        public BuilderInterstitial testDevice(String deviceCode) {
+            this.deviceCode=deviceCode;
+            adRequestBuilder.addTestDevice(deviceCode);
             return this;
         }
 
