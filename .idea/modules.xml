@@ -2,10 +2,13 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Easy-Ads.iml" filepath="$PROJECT_DIR$/Easy-Ads.iml" />
       <module fileurl="file://$PROJECT_DIR$/EasyAds.iml" filepath="$PROJECT_DIR$/EasyAds.iml" />
       <module fileurl="file://$PROJECT_DIR$/EasyAds.iml" filepath="$PROJECT_DIR$/EasyAds.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/easy-ads/easy-ads.iml" filepath="$PROJECT_DIR$/easy-ads/easy-ads.iml" />
       <module fileurl="file://$PROJECT_DIR$/easy-ads/easy-ads.iml" filepath="$PROJECT_DIR$/easy-ads/easy-ads.iml" />
       <module fileurl="file://$PROJECT_DIR$/easy-ads/easy-ads.iml" filepath="$PROJECT_DIR$/easy-ads/easy-ads.iml" />
     </modules>

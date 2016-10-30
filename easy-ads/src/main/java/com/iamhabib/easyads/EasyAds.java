@@ -48,7 +48,7 @@ public class EasyAds {
         }
 
         public Banner with(AdView adViewBanner) {
-            this.adViewBanner.setAdSize(AdSize.SMART_BANNER);
+            this.adViewBanner=adViewBanner;
             return this;
         }
 
