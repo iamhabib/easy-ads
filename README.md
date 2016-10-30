@@ -42,7 +42,7 @@ EasyAds.forInterstitial(getApplicationContext())
                     @Override
                     public void onAdLoaded() {
                         super.onAdLoaded();
-                        Toast.makeText(MainActivity.this, "OK", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "OK", Toast.LENGTH_SHORT).show();
                     }
                 })
                 .adUnitId(getString(R.string.interstitial_ad_unit_id))
