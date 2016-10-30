@@ -1,8 +1,10 @@
 # Easy Ads [ ![Download](https://api.bintray.com/packages/osongae2/maven/easy-ads/images/download.svg) ](https://bintray.com/osongae2/maven/easy-ads/_latestVersion)
+-------------------
 
 Easy way to show AdMob ads in Android.
 
 ##Usage
+-----------
 
 Add below line in app ```build.gradle```
  
@@ -13,10 +15,12 @@ dependencies {
 ```
 
 ##Code snippets
+---------------
 
 Show Banner, Native, Interstitial Ad by using those minimal code:
 
-```EasyAds.forBanner(this)
+```groovy
+EasyAds.forBanner(this)
                 .with((AdView)findViewById(R.id.adView))
                 .testDevice("FBDDE95B4A3E5E14648320330112B091")
                 .show();```
