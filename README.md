@@ -1,4 +1,4 @@
-# Easy Ads[ ![Download](https://api.bintray.com/packages/osongae2/maven/easy-ads/images/download.svg) ](https://bintray.com/osongae2/maven/easy-ads/_latestVersion)
+# Easy Ads [ ![Download](https://api.bintray.com/packages/osongae2/maven/easy-ads/images/download.svg) ](https://bintray.com/osongae2/maven/easy-ads/_latestVersion)
 
 Easy way to show AdMob ads in Android.
 
