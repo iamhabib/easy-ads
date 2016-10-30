@@ -19,12 +19,36 @@ dependencies {
 
 Show Banner, Native, Interstitial Ad by using those minimal code:
 
+### Banner ###
 ```groovy
-EasyAds.forBanner(this)
+EasyAds.forBanner(getApplicationContext())
                 .with((AdView)findViewById(R.id.adView))
                 .testDevice("FBDDE95B4A3E5E14648320330112B091")
-                .show();```
+                .show();
+```
 
+#### Native ###
+```groovy
+EasyAds.forNative(getApplicationContext())
+                .with((NativeExpressAdView)findViewById(R.id.nativeAds))
+                .show();
+```
+
+### Interstitial ###
+```groovy
+EasyAds.forInterstitial(getApplicationContext())
+                .delay(30000)
+                .listener(new EasyAds.Interstitial.AdsListener(){
+                    @Override
+                    public void onAdLoaded() {
+                        super.onAdLoaded();
+                        Toast.makeText(MainActivity.this, "OK", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .adUnitId(getString(R.string.interstitial_ad_unit_id))
+                .testDevice("FBDDE95B4A3E5E14648320330112B091")
+                .show();
+```
 
 ##License
 
