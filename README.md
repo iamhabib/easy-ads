@@ -1,4 +1,4 @@
-# Easy Ads [ ![Download](https://api.bintray.com/packages/osongae2/maven/easy-ads/images/download.svg) ](https://bintray.com/osongae2/maven/easy-ads/_latestVersion)
+# Easy Ads [ ![Download](https://api.bintray.com/packages/osongae2/maven/easy-ads/images/download.svg) ](https://bintray.com/osongae2/maven/easy-ads/_latestVersion) [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-EasyAds-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/4576)
 -------------------
 
 Easy way to show AdMob ads in Android.
