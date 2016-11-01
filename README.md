@@ -21,7 +21,7 @@ Show Banner, Native, Interstitial Ad by using those minimal code:
 
 ### Banner ###
 ```groovy
-EasyAds.forBanner(getApplicationContext())
+EasyAds.forBanner(this)
                 .with((AdView)findViewById(R.id.adView))
                 .testDevice("FBDDE95B4A3E5E14648320330112B091")
                 .show();
@@ -29,14 +29,14 @@ EasyAds.forBanner(getApplicationContext())
 
 #### Native ###
 ```groovy
-EasyAds.forNative(getApplicationContext())
+EasyAds.forNative(this)
                 .with((NativeExpressAdView)findViewById(R.id.nativeAds))
                 .show();
 ```
 
 ### Interstitial ###
 ```groovy
-EasyAds.forInterstitial(getApplicationContext())
+EasyAds.forInterstitial(this)
                 .delay(30000)
                 .listener(new EasyAds.Interstitial.AdsListener(){
                     @Override
